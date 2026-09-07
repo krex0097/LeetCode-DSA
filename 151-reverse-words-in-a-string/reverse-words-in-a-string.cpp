@@ -4,22 +4,22 @@ public:
         int n = s.size();
         string ans = "";
         int i = 0;
-        string nw = " ";
+        vector<string> words;
         while (i < n) {
             while (i < n && s[i] == ' ')
                 i++;
-            while (i < n && s[i] != ' ') {
-                nw += s[i];
+            int start = i;
+            while (i < n && s[i] != ' ')
                 i++;
-            }
-            if (nw.size() > 1) {
-                ans.insert(ans.begin(), nw.begin(), nw.end());
-                nw = " ";
-            }
+            if (start < i)
+                words.push_back(s.substr(start, i-start));
         }
-        if (ans.size() > 0)
-            ans = ans.substr(1, ans.size());
-        ;
+        for (int i = words.size() - 1; i >= 0; i--) {
+            ans += words[i];
+            if (i > 0)
+                ans += " ";
+        }
+
         return ans;
     }
 };
