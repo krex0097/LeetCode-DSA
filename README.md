@@ -1,7 +1,6 @@
 # leetcode-dsa
 
-My personal repository for tracking LeetCode solutions and mastering Data Structures & Algorithms. All solutions are automatically synced from LeetCode using the LeetSync extension.
-
+My personal repository for tracking LeetCode solutions and mastering Data Structures & Algorithms. 
 ## 🛠️ Environment & Language
 * **Language:** C++ (C++17 / C++20)
 * **Standard Library:** Heavy use of `<vector>`, `<unordered_map>`, `<queue>`, `<stack>`, and `<algorithm>` for optimal performance.
