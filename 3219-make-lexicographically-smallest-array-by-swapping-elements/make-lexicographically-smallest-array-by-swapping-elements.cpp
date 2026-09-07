@@ -6,22 +6,19 @@ public:
         for (int i = 0; i < n; i++)
             p.push_back({nums[i], i});
         sort(p.begin(), p.end());
-        vector<vector<pair<int, int>>> grps;
-        grps.push_back({p[0]});
-        for (int i = 1; i < n; i++)
-            if (abs(p[i].first - p[i - 1].first) <= limit)
-                grps.back().push_back(p[i]);
-            else
-                grps.push_back({p[i]});
         vector<int> ans(n);
-        for (int i = 0; i < grps.size(); i++) {
-            int gs = grps[i].size();
+        int i = 0;
+        while (i < n) {
+            int j = i + 1;
             vector<int> sortedIdx;
-            for (int j = 0; j < gs; j++)
-                sortedIdx.push_back(grps[i][j].second);
+            while (j<n && abs(p[j].first - p[j - 1].first) <= limit)
+                j++;
+            for (int k = i; k < j; k++)
+                sortedIdx.push_back(p[k].second);
             sort(sortedIdx.begin(), sortedIdx.end());
-            for (int j = 0; j < gs; j++)
-                ans[sortedIdx[j]] = grps[i][j].first;
+            for (int k = i; k < j; k++)
+                ans[sortedIdx[k - i]] = p[k].first;
+            i=j;
         }
         return ans;
     }
