@@ -1,19 +1,12 @@
 class Solution {
 public:
-    using ll = long long;
+    using ll = unsigned long long;
     long long countCommas(long long n) {
-        if (n < 1000)
-            return 0;
-        ll next = 999999LL, curr = 999, ans = 0LL;
-        int commas = 1;
-        while (true) {
-            ans += (min(next, n) - curr) * commas;
-            if (next > n)
-                break;
-            curr = next;
-            next = (next + 1) * 1000 -1;
-            commas++;
-        }
+        ll ans=0, base=1000;
+       while(base<=n){
+        ans+=n-base+1;
+        base*=1000;
+       }
         return ans;
     }
 };
