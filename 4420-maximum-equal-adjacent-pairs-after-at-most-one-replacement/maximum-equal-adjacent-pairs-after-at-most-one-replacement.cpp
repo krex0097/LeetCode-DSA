@@ -1,8 +1,8 @@
 class Solution {
 public:
     int maxEqualAdjacentPairs(vector<int>& nums) {
-        map<pair<int, int>, int > mp;
-        int n=nums.size();
+        map<pair<int, int>, int> mp;
+        int n = nums.size();
         for (int i = 0; i < n - 1; i++)
             if (nums[i] != nums[i + 1]) {
                 int l = nums[i], r = nums[i + 1];
@@ -16,10 +16,11 @@ public:
                 freq = it.second;
             }
         int cnt = 0;
-        for (int i = 0; i < n-1; i++) {
+        for (int i = 0; i < n - 1; i++) {
             if (nums[i] == ele)
                 nums[i] = change;
-            if(nums[i+1]==ele)nums[i+1]=change;
+            if (nums[i + 1] == ele)
+                nums[i + 1] = change;
             if (nums[i] == nums[i + 1])
                 cnt++;
         }
