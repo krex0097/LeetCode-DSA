@@ -1,16 +1,14 @@
 class Solution {
 public:
     string maxSumOfSquares(int num, int sum) {
-        string val = "";
-        int cnt = 0, digSum = 0;
-        while (cnt < num && digSum + 9 <= sum)
-            val += '9', cnt++, digSum += 9;
-        char diff =(sum - digSum)+'0';
-        if (cnt < num && sum - digSum)
-            val += diff, digSum = sum, cnt++;
-        while (cnt < num)
-            val += '0', cnt++;
+        if (num * 9 < sum)
+            return "";
+        int nines = sum / 9, rem = sum % 9;
+          string ans(nines, '9');
 
-        return (digSum == sum ? val : "");
+        if (rem) ans += char(rem + '0');
+
+        ans += string(num - ans.size(), '0');
+        return ans;
     }
 };
